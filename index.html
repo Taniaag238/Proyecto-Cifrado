@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8"> <!-- [42] -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- [43] -->
+
+    <title>Cifrados Clásicos</title> <!-- [44] -->
+
+    <link rel="stylesheet" href="style.css"> <!-- [45] -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> <!-- [46] -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- [47] -->
+
+</head>
+
+<body>
+
+    <header class="encabezado"> <!-- [48] -->
+
+        <div class="encabezado-contenido">
+
+            <div class="logo">
+
+                <div class="logo-icono">
+
+                    <i class="fa-solid fa-shield-halved"></i> <!-- [49] -->
+
+                </div>
+
+                <div>
+
+                    <h1>Cifrados Clásicos</h1> <!-- [50] -->
+
+                    <p>César y Atbash</p> <!-- [51] -->
+
+                </div>
+
+            </div>
+
+            <div class="estado">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <span>Procesamiento local</span> <!-- [52] -->
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main class="contenedor"> <!-- [53] -->
+
+        <section class="introduccion"> <!-- [54] -->
+
+            <span class="etiqueta">
+                SEGURIDAD INFORMÁTICA
+            </span>
+
+            <h2>
+                Encriptación y análisis de mensajes <!-- [55] -->
+            </h2>
+
+            <p>
+                Utiliza los métodos de César y Atbash para cifrar y
+                descifrar mensajes mediante un conjunto de caracteres
+                personalizable. <!-- [56] -->
+            </p>
+
+        </section>
+
+
+        <section class="tarjeta"> <!-- [57] -->
+
+            <div class="titulo-seccion">
+
+                <div class="icono-seccion">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>Cifrar mensaje</h2> <!-- [58] -->
+
+                    <p>
+                        Selecciona el método y configura los parámetros.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="texto">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                    Mensaje
+
+                </label>
+
+                <textarea
+                    id="texto"
+                    rows="5"
+                    placeholder="Escribe aquí el mensaje que deseas cifrar..."></textarea> <!-- [59] -->
+
+                <div class="acciones-texto">
+
+                    <span class="ayuda">
+                        Mínimo 15 caracteres
+                    </span>
+
+                    <button
+                        type="button"
+                        id="btnLimpiarTexto"
+                        class="btn-secundario"> <!-- [60] -->
+
+                        <i class="fa-solid fa-trash"></i>
+
+                        Limpiar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>
+
+                    <i class="fa-solid fa-keyboard"></i>
+
+                    Conjunto de caracteres
+
+                </label>
+
+                <div
+                    id="tecladoCharset"
+                    class="teclado"> <!-- [61] -->
+                </div>
+
+                <textarea
+                    id="charset"
+                    hidden></textarea> <!-- [62] -->
+
+                <div class="agregar-caracter">
+
+                    <input
+                        type="text"
+                        id="nuevoCaracter"
+                        maxlength="2"
+                        placeholder="Agregar carácter"> <!-- [63] -->
+
+                    <button
+                        type="button"
+                        id="btnAgregarCaracter"
+                        class="btn-secundario">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Agregar
+
+                    </button>
+
+                    <button
+                        type="button"
+                        id="btnBorrarCaracter"
+                        class="btn-icono"
+                        title="Eliminar último carácter">
+
+                        <i class="fa-solid fa-delete-left"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="configuracion">
+
+                <div class="campo">
+
+                    <label for="tipoCifrado">
+
+                        <i class="fa-solid fa-sliders"></i>
+
+                        Método de cifrado
+
+                    </label>
+
+                    <select id="tipoCifrado"> <!-- [64] -->
+
+                        <option value="CESAR">
+                            César
+                        </option>
+
+                        <option value="ATBASH">
+                            Atbash
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div
+                    class="campo campo-modulo"
+                    id="campoModulo">
+
+                    <label for="modulo">
+
+                        <i class="fa-solid fa-arrows-rotate"></i>
+
+                        Módulo
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="modulo"
+                        min="0"
+                        value="3"> <!-- [65] -->
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="btnCifrar"
+                class="btn-principal"> <!-- [66] -->
+
+                <i class="fa-solid fa-lock"></i>
+
+                Cifrar mensaje
+
+            </button>
+
+
+            <div
+                class="resultado"
+                id="resultadoCifrado"
+                hidden> <!-- [67] -->
+
+                <div class="resultado-cabecera">
+
+                    <div>
+
+                        <span class="resultado-etiqueta">
+                            RESULTADO
+                        </span>
+
+                        <h3>
+                            Mensaje cifrado
+                        </h3>
+
+                    </div>
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                </div>
+
+                <div
+                    id="textoResultadoCifrado"
+                    class="resultado-texto"> <!-- [68] -->
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section
+            class="tarjeta"
+            id="panelDescifrar"
+            hidden> <!-- [69] -->
+
+            <div class="titulo-seccion">
+
+                <div class="icono-seccion">
+
+                    <i class="fa-solid fa-lock-open"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        Descifrar mensaje
+                    </h2>
+
+                    <p>
+                        El sistema analizará automáticamente el método utilizado. <!-- [70] -->
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="textoDescifrar">
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                    Mensaje cifrado
+
+                </label>
+
+                <textarea
+                    id="textoDescifrar"
+                    rows="5"
+                    placeholder="Aquí aparecerá el mensaje cifrado..."></textarea> <!-- [71] -->
+
+            </div>
+
+
+            <button
+                type="button"
+                id="btnDescifrar"
+                class="btn-principal"> <!-- [72] -->
+
+                <i class="fa-solid fa-unlock"></i>
+
+                Descifrar automáticamente
+
+            </button>
+
+
+            <div
+                class="resultado resultado-descifrado"
+                id="seccionResultadoDescifrado"
+                hidden> <!-- [73] -->
+
+                <div class="resultado-cabecera">
+
+                    <div>
+
+                        <span class="resultado-etiqueta">
+                            RESULTADO
+                        </span>
+
+                        <h3>
+                            Mensaje descifrado
+                        </h3>
+
+                    </div>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </div>
+
+
+                <div
+                    id="textoResultadoDescifrado"
+                    class="resultado-texto"> <!-- [74] -->
+                </div>
+
+
+                <div class="datos-deteccion">
+
+                    <div>
+
+                        <span>
+                            Método detectado
+                        </span>
+
+                        <strong id="metodoDetectado"> <!-- [75] -->
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Módulo
+                        </span>
+
+                        <strong id="moduloDetectado"> <!-- [76] -->
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Confianza
+                        </span>
+
+                        <strong id="confianzaDetectada"> <!-- [77] -->
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer> <!-- [78] -->
+
+        <p>
+            Cifrados clásicos · Proyecto de Seguridad Informática
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script><!-- [79] -->
+
+</body>
+
+</html>
