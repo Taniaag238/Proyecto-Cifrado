@@ -1,3 +1,4 @@
+
 const charset = document.getElementById("charset"); // [80]
 const tecladoCharset = document.getElementById("tecladoCharset"); // [81]
 const nuevoCaracter = document.getElementById("nuevoCaracter"); // [82]
@@ -40,7 +41,6 @@ const moduloDetectado =
 const confianzaDetectada =
     document.getElementById("confianzaDetectada"); // [100]
 
-
 const charsetInicial =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + // [101]
     "abcdefghijklmnopqrstuvwxyz" + // [102]
@@ -49,9 +49,7 @@ const charsetInicial =
     " .,;:!?¿¡-_()[]{}@#%&=+/" + // [105]
     "😀😃😄😁😂🙂🙃😉😊😎😍👍👎⭐🔥🎉🚀"; // [106]
 
-
 charset.value = charsetInicial; // [107]
-
 
 function mostrarTeclado() { // [108]
     tecladoCharset.innerHTML = ""; // [109]
@@ -80,7 +78,6 @@ function mostrarTeclado() { // [108]
     }
 }
 
-
 function actualizarMetodo() { // [124]
     if (tipoCifrado.value === "CESAR") { // [125]
         campoModulo.classList.remove("oculto"); // [126]
@@ -101,7 +98,6 @@ function actualizarMetodo() { // [124]
     }, 180);
 }
 
-
 function mostrarError(mensaje) { // [134]
     Swal.fire({ // [135]
         icon: "error", // [136]
@@ -111,7 +107,6 @@ function mostrarError(mensaje) { // [134]
         confirmButtonColor: "#244568" // [140]
     });
 }
-
 
 function mostrarAviso(mensaje) { // [141]
     Swal.fire({ // [142]
@@ -123,7 +118,6 @@ function mostrarAviso(mensaje) { // [141]
     });
 }
 
-
 function obtenerModulo() { // [148]
     const valor = Number(modulo.value); // [149]
 
@@ -133,7 +127,6 @@ function obtenerModulo() { // [148]
 
     return valor; // [152]
 }
-
 
 function validarCharset() { // [153]
     if (!charset.value) { // [154]
@@ -155,7 +148,6 @@ function validarCharset() { // [153]
     return true; // [160]
 }
 
-
 function validarMensaje(mensaje) { // [161]
     if (mensaje.trim().length < 15) { // [162]
         mostrarAviso( // [163]
@@ -168,12 +160,10 @@ function validarMensaje(mensaje) { // [161]
     return true; // [165]
 }
 
-
 tipoCifrado.addEventListener( // [166]
     "change",
     actualizarMetodo
 );
-
 
 btnAgregarCaracter.addEventListener( // [167]
     "click",
@@ -219,7 +209,6 @@ btnAgregarCaracter.addEventListener( // [167]
     }
 );
 
-
 nuevoCaracter.addEventListener( // [179]
     "keydown",
     (evento) => {
@@ -229,7 +218,6 @@ nuevoCaracter.addEventListener( // [179]
         }
     }
 );
-
 
 btnBorrarCaracter.addEventListener( // [183]
     "click",
@@ -249,7 +237,6 @@ btnBorrarCaracter.addEventListener( // [183]
     }
 );
 
-
 btnLimpiarTexto.addEventListener( // [189]
     "click",
     () => {
@@ -257,7 +244,6 @@ btnLimpiarTexto.addEventListener( // [189]
         texto.focus(); // [191]
     }
 );
-
 
 btnCifrar.addEventListener( // [192]
     "click",
@@ -342,7 +328,6 @@ btnCifrar.addEventListener( // [192]
     }
 );
 
-
 btnDescifrar.addEventListener( // [214]
     "click",
     async () => {
@@ -420,6 +405,6 @@ btnDescifrar.addEventListener( // [214]
     }
 );
 
-
 actualizarMetodo(); // [232]
 mostrarTeclado(); // [233]
+
